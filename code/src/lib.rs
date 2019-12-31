@@ -6,6 +6,7 @@ extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
 extern crate base64;
+extern crate snap;
 
 #[macro_use]
 pub mod utils;

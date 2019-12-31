@@ -31,5 +31,8 @@ dirs = "2.0"
 
 futures = "0.3.1"
 
+snap = "0.2.5"
+
+
 [dev-dependencies]
 test_utils = { path = "test_utils" }
