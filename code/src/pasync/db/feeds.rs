@@ -91,6 +91,11 @@ impl FeedStorage {
     }
 
     pub fn last_seq(&self) -> Result<u32,io::Error> {
+
+        if !self.path.exists() {
+            return Ok(0);
+        }
+
         let mut file = OpenOptions::new()
             .read(true)
             .open(&self.path)?;
@@ -200,7 +205,6 @@ impl Iterator for FeedStorageIterator {
      } 
 }
 
-
 pub struct FeedStorageReverseIterator {
     file   : File,
     current_seq_no : u32,
@@ -292,6 +296,7 @@ mod test {
         let f2 = Feed{seq_no:2, value:"8181".to_string()};
         let f3 = Feed{seq_no:3, value:"182881".to_string()};
 
+        assert_eq!(0,feed.last_seq()?);
         feed.append(f1.seq_no, &f1.value)?;
         assert_eq!(1,feed.last_seq()?);
         feed.append(f2.seq_no, &f2.value)?;

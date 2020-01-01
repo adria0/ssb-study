@@ -1,10 +1,6 @@
 mod api;
 mod config;
 mod messagetypes;
-mod feed;
-mod message;
-mod encoding;
-mod privatebox;
 mod pubs;
 
 pub use api::{
@@ -12,5 +8,3 @@ pub use api::{
     CreateStreamArgs,
 };
 pub use config::{ssb_net_id, IdentitySecret};
-pub use privatebox::{is_privatebox,privatebox_cipher,privatebox_decipher};
-pub use encoding::{ssb_sha256,stringify_json};

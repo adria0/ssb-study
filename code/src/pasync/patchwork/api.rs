@@ -3,8 +3,8 @@ use serde_json;
 
 use crate::pasync::rpc::{RpcClient, Header, RequestNo, RpcType};
 use crate::pasync::util::to_ioerr;
-use super::message::Message;
-use super::feed::Feed;
+use crate::pasync::feed::Message;
+use crate::pasync::feed::Feed;
 
 #[derive(Debug, Deserialize)]
 pub struct ErrorRes {

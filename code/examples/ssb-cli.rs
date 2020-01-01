@@ -13,6 +13,7 @@ use code::pasync::util::to_ioerr;
 use code::pasync::handbox::handshake_client;
 use code::pasync::handbox::BoxStream;
 use code::pasync::patchwork::*;
+use code::pasync::feed::{is_privatebox,privatebox_decipher};
 
 async fn get_async<'a,R,W,T,F> (client: &mut ApiClient<R,W>, req_no : RequestNo, f : F) -> io::Result<T>
 where
