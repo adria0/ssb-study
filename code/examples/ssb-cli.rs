@@ -61,9 +61,9 @@ async fn main() -> io::Result<()> {
     let IdentitySecret{pk,sk,..} = IdentitySecret::from_local_config()
         .expect("read local secret");
 
-    let socket = TcpStream::connect("127.0.0.1:8008").await?;
+    let mut socket = TcpStream::connect("127.0.0.1:8008").await?;
 
-    let handshake = handshake_client(&socket, ssb_net_id(), pk, sk.clone(), pk).await
+    let (_,handshake) = handshake_client(&mut socket, ssb_net_id(), pk, sk.clone(), pk).await
         .map_err(to_ioerr)?;
 
     println!("💃 handshake complete");
